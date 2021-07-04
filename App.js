@@ -11,6 +11,8 @@ import HomeScreen from './src/Screens/HomeScreen/HomeScreen';
 import BookDisplay from './src/Screens/BookDisplayScreen/BookDisplay';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import {Provider} from 'react-redux';
+import store from './src/Redux/store';
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -39,4 +41,10 @@ const App = () => {
   );
 };
 
-export default App;
+export default () => {
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
+};

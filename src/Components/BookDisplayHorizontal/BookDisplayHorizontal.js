@@ -4,7 +4,14 @@ import Iconicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import images from '../../data/bookdata';
 import styles from './styles';
+import {useDispatch} from 'react-redux';
+import {changeBook} from '../../Redux/features/homeSlice';
 const BookDisplayHorizontal = ({navigation}) => {
+  const dispatch = useDispatch();
+  const onPress = item => {
+    dispatch(changeBook(item));
+    navigation.navigate('Book');
+  };
   return (
     <View>
       <View style={styles.root}>
@@ -15,7 +22,7 @@ const BookDisplayHorizontal = ({navigation}) => {
         <FlatList
           data={images}
           renderItem={({item}) => (
-            <Pressable onPress={() => navigation.navigate('Book')}>
+            <Pressable onPress={() => onPress(item)}>
               <Image style={styles.image} source={{uri: item.image}} />
               <View style={styles.viewcontainer}>
                 <View style={styles.viewcontainer}>

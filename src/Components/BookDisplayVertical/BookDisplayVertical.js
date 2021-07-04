@@ -5,7 +5,14 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
 import bookdata from '../../data/bookdata';
 import styles from './styles';
+import {useDispatch} from 'react-redux';
+import {changeBook} from '../../Redux/features/homeSlice';
 const BookDisplayVertical = ({navigation}) => {
+  const dispatch = useDispatch();
+  const onPress = item => {
+    dispatch(changeBook(item));
+    navigation.navigate('Book');
+  };
   return (
     <View style={styles.root}>
       <View style={styles.tabnavigation}>
@@ -15,7 +22,7 @@ const BookDisplayVertical = ({navigation}) => {
       </View>
       {bookdata.map((item, index) => (
         <View key={index + 1} style={{flexDirection: 'row', marginBottom: 10}}>
-          <Pressable onPress={() => navigation.navigate('Book')}>
+          <Pressable onPress={() => onPress(item)}>
             <Image
               source={{
                 uri: item.image,

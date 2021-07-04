@@ -1,26 +1,11 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  ScrollView,
-  Pressable,
-} from 'react-native';
+import {View, Text, Image, ScrollView, Pressable} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
+import {selectBook} from '../../Redux/features/homeSlice';
+import {useSelector} from 'react-redux';
 import styles from './styles';
-const images = {
-  key: 3,
-  name: 'The Tiny Dragon',
-  image: 'https://images-na.ssl-images-amazon.com/images/I/712ZCGOQ4wL.jpg',
-  time: '3d 9h',
-  author: 'Vipul Singhal',
-  percent: '45%',
-  pages: 160,
-  language: 'Eng',
-  rating: 4.5,
-};
 const BookDisplay = () => {
+  const images = useSelector(selectBook);
   return (
     <View style={styles.root}>
       <View style={styles.imageContainer}>

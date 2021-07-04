@@ -3,14 +3,17 @@ import {View, Text} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Foundation from 'react-native-vector-icons/Foundation';
 import Iconicons from 'react-native-vector-icons/Ionicons';
+import {selectName} from '../../Redux/features/homeSlice';
+import {useSelector} from 'react-redux';
 import styles from './styles';
 const HomePageHeader = () => {
+  const name = useSelector(selectName);
   return (
     <View style={styles.root}>
       <View style={styles.topContainer}>
         <View>
           <Text style={styles.headerText}>Good Morning</Text>
-          <Text style={styles.bottomText}>Vipul Singhal</Text>
+          <Text style={styles.bottomText}>{name}</Text>
         </View>
         <View style={styles.pointContainer}>
           <View style={styles.iconcontainer}>
